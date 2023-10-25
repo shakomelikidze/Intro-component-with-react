@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 export default function Inputs() {
 
@@ -15,7 +16,6 @@ export default function Inputs() {
 
   const {register, handleSubmit, formState} = useForm({
     resolver : yupResolver(validationScheme)
-
   });
   
   const onSubmit = async (data) => {
@@ -30,7 +30,12 @@ export default function Inputs() {
         placeholder='First Name' 
         {...register('firstName')}
       />
-      <p className='error-text'>{formState.errors.firstName && formState.errors.firstName.message}</p>
+      {formState.errors.firstName && (
+          <>
+            <p className="error-text">{formState.errors.firstName.message}</p>
+            <svg className='error-image' width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+          </>
+      )}
       <input 
         type='text'
         placeholder='Last Name'
