@@ -19,7 +19,7 @@ export default function Inputs() {
   });
   
   const onSubmit = async (data) => {
-    // console.log(data);
+    location.reload(); 
   }
 
   return (
@@ -31,29 +31,43 @@ export default function Inputs() {
         {...register('firstName')}
       />
       {formState.errors.firstName && (
-          <>
-            <p className="error-text">{formState.errors.firstName.message}</p>
-            <svg className='error-image' width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
-          </>
+        <div className='error-div'>
+          <p className="error-text">{formState.errors.firstName.message}</p>
+          <svg className='error-image' width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+        </div>
       )}
       <input 
         type='text'
         placeholder='Last Name'
         {...register('lastName')}
       />
-      <p className='error-text'>{formState.errors.lastName && formState.errors.lastName.message}</p>
+      {formState.errors.lastName && (
+        <div className='error-div'>
+          <p className="error-text">{formState.errors.lastName.message}</p>
+          <svg className='error-image' width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+        </div>
+      )}      
       <input 
         type='text'
         placeholder='Email'
         {...register('email')}
       />
-      <p className='error-text'>{formState.errors.email && formState.errors.email.message}</p>
-      <input 
+      {formState.errors.email && (
+        <div className='error-div'>
+          <p className="error-text">{formState.errors.email.message}</p>
+          <svg className='error-image-email' width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+        </div>
+      )}       <input 
         type='password'
         placeholder='Password'
         {...register('password')}
       />
-      <p className='error-text'>{formState.errors.password && formState.errors.password.message}</p>
+      {formState.errors.password && (
+        <div className='error-div'>
+          <p className="error-text">{formState.errors.password.message}</p>
+          <svg className='error-image-password' width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+        </div>
+      )}       
       <button type='submit' className='claim-btn'>CLAIM YOUR FREE TRIAL</button>
     </form>
    
